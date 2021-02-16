@@ -27,3 +27,13 @@ a {
   height: 20vw;
   object-fit: cover;
 }
+
+#form{
+  width: 360px;
+  margin: 38px auto;
+  padding: 30px;
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.5);
+  border-radius: 10px;
+  background: white;
+}
+

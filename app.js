@@ -4,10 +4,12 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const expressLayout = require('express-ejs-layouts');
-var indexRouter = require('./routes/index');
+const session = require('express-session');
+const flash = require('connect-flash');
+ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const dotenv = require('dotenv')
-dotenv.config({})
+dotenv.config()
 require("./db/database")
 
 var app = express();
@@ -21,6 +23,12 @@ app.use(express.json());
 app.use(expressLayout);
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({
+  secret:process.env.SECRET,
+  saveUninitialized: false,
+  resave: false
+}));
+app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);

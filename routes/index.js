@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var homeController = require("../controller/viewsClass/viewsController")
-let controller = new homeController()
+var viewsController = require("../controller/viewsClass/viewsController")
+let controller = new viewsController()
 
 /* GET home page. */
 
