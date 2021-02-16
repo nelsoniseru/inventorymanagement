@@ -10,15 +10,20 @@ a {
   background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("../images/header.jpg");
   background-size: cover;
   height: 80vh;
+  background-position: 10% 30%;
+  background-repeat: no-repeat;
   
 }
-
+.featured-product{
+  margin: 3.5rem;
+  text-transform:uppercase
+}
 .card {
   margin: 0 auto;
   /* Added */
   float: none;
   /* Added */
-  margin-bottom: 10px;
+  margin-bottom: 3rem;
   /* Added */
   box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 30px !important;
 }
