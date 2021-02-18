@@ -6,7 +6,7 @@ let existingUser = new findUser()
 class UserReg{
 
 async Register(req,res){
-    console.log(req.body)
+ 
 const {name,email,phone_number,password} = req.body
 let result = await existingUser.fetchUserByEmail(email)
 let salt = await bcrypt.genSalt(10)
