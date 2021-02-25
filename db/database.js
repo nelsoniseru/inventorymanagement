@@ -7,3 +7,6 @@ mongoClient.connect(process.env.LOCAL,{useNewUrlParser: true, useUnifiedTopology
 mongoClient.connection.on("connected",function(){
 console.log("db is connected");
 });
+
+
+module.exports.mongoClient = mongoClient

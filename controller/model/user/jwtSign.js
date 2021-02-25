@@ -1,5 +1,5 @@
 let jwt = require("jsonwebtoken")
-function userJwt(id){
+function jwtSign(id){
     const token = jwt.sign({ id }, process.env.JWT_SECRET, {
         expiresIn: process.env.JWT_EXPIRES_IN
     })
@@ -12,4 +12,4 @@ function userJwt(id){
     return [token,cookieOption]
 }
 
-module.exports.userJwt = userJwt
+module.exports.jwtSign = jwtSign

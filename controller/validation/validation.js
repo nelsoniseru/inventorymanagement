@@ -35,7 +35,8 @@ module.exports.check = [
 module.exports.validation = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    res.render('', { errors: errors.mapped() });
+    req.flash("errormsg", errors.mapped()) 
+    
   } else {
     next()
   }

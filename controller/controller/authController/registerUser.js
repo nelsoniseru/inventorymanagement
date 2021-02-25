@@ -1,6 +1,6 @@
-let CreateUser = require("../../models/users")
+let CreateUser = require("../../../models/users")
 let bcrypt = require("bcryptjs")
-let findUser = require("../user/findUser")
+let findUser = require("../../model/user/findUser")
 let existingUser = new findUser()
 
 class UserReg{

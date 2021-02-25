@@ -5,6 +5,6 @@ let controller = new viewsController()
 
 /* GET home page. */
 
-router.get('/', controller.HomeController);
-
+router.get('/add-to-cart/:getproductId', controller.AddtocartController);
+router.get('/getproduct/:getproduct', controller.productDetailsController);
 module.exports = router;
