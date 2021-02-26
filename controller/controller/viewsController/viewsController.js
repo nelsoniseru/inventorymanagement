@@ -9,7 +9,6 @@ class ViewsController {
         res.render("./home/index", { results })
     }
     RegisterController(req, res) {
-        console.log(req.session.cart)
         res.render("./user/signup")
     }
 
@@ -37,6 +36,11 @@ class ViewsController {
         const id = req.params.getproduct;
         let product = await Allproducts.findProductById(id)
       res.render("./product/productdetails", {product})
+    }
+
+    
+     cartController(req, res) {
+      res.render("./product/cartproduct")
     }
 
 }

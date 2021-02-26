@@ -7,4 +7,5 @@ let controller = new viewsController()
 
 router.get('/add-to-cart/:getproductId', controller.AddtocartController);
 router.get('/getproduct/:getproduct', controller.productDetailsController);
+router.get('/cart-page', controller.cartController);
 module.exports = router;

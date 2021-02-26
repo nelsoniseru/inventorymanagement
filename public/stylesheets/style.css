@@ -33,9 +33,9 @@ a {
   object-fit: cover;
 }
 .card:hover{
-  -webkit-box-shadow: 3px 3px 5px 6px #494647;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-  -moz-box-shadow: 3px 3px 5px 6px #494647;  /* Firefox 3.5 - 3.6 */
-  box-shadow:  3px 3px 5px 6px #6e6d6e !important; 
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow: 3px 3px 5px 6px #ccc;  /* Firefox 3.5 - 3.6 */
+  box-shadow:  2px 2px 2px 2px #ccc !important; 
 }
 #form{
   width: 360px;

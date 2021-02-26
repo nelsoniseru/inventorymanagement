@@ -43,6 +43,7 @@ app.use(flash());
 const middleware = function(req,res,next){
   res.locals.success= req.flash("success")
   res.locals.errormsg= req.flash("errormsg")
+  res.locals.session = req.session
   next()
 }
 
