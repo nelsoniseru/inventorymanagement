@@ -1,1 +1,55 @@
-<h1>hello</h1>
+<%- include( "../partials/error/error") %> 
+<div class="container">
+    <%if(items.length !==0){%>
+<table id="cart" class="table table-hover table-condensed table-responsive">
+<thead>
+    <th style="width:50%">Product</th>
+    <th style="width:10%">Price</th>
+    <th style="width:8%">Quantity</th>
+    <th style="width:23%">Subtotal</th>
+    <th style="width:10%"></th>
+</thead>
+<tbody>
+<%items.forEach(res=>{%>
+
+  
+    <tr>
+        <td data-th="Product">
+         <div class="row">
+         <div class="col-sm-2 hidden-xs"><img></div>
+         <div class="col-sm-10">
+        <h4 class="nomargin"><%=res.product.item%></h4>
+        <p></p>
+         </div>
+         </div>
+        </td>
+        <td data-th="Price">$<%=res.product.price%></td>
+        <td data-th="Quantity">
+        <form action="/cart-addunit/<%=res.product._id%>" method="get">
+            <input type="number" class="form-control text-center" value="<%=res.purchaseQty%>" name="unit">
+        </td>
+        <td data-th="Subtotal" class=""><%=res.subTotal%></td>
+        <td class="actions" data-th="">
+           <button  class="btn btn-info btn-sm">r</button>
+        </form>
+           <a href="/cart-removeitem/<%=res.product._id%>" class="btn btn-danger btn-sm">x</a>
+        </td>
+    </tr>
+    <%})%>
+</tbody>
+<tfoot>
+   
+        <tr>
+            <td><a href="/" class="btn btn-warning"><i class="fa fa-angle-left"></i>Continue Shopping</a></td>
+            <td colspan="2" class="hidden-xs"></td>
+            <td class="hidden-xs text-center"><strong>Total $<%=session.cart.totalPrice%></strong></td>
+            <td><a href="/checkout-form" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+        </tr>
+ 
+</tfoot>
+
+</table>
+<%}else{%>
+    <h4 class="text-center">No items available in the cart</h4>
+    <%}%>
+</div>

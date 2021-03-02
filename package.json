@@ -18,11 +18,13 @@
     "express-ejs-layouts": "^2.5.0",
     "express-session": "^1.17.1",
     "express-validator": "^6.9.2",
+    "flutterwave-node-v3": "^1.0.6",
     "http-errors": "~1.6.3",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.16",
     "mongoose-seed": "^0.6.0",
     "morgan": "~1.9.1",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "open": "^8.0.0"
   }
 }

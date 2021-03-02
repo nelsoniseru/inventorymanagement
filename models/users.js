@@ -12,6 +12,12 @@ const userSchema = new mongoose.Schema({
     address:{
         type:String
     },
+    country:{
+        type:String
+    },
+    state:{
+        type:String
+    },
     password:{
         type:String
     },
