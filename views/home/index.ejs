@@ -1,0 +1,29 @@
+<div>
+  <div class="banner">
+
+  </div>
+<div class="container">
+<div class="featured-product">
+<h1 class="text-center">featured product</h1>
+</div>
+<div class="row">
+  <%results.forEach((res)=>{%>
+  <a href="/getproduct/<%=res._id%>">
+    <div class="col-md-4">
+    <div class="card" style="width: 18rem;">
+      <img src="<%=res.image%>" class="card-img-top" alt="...">
+      <div class="card-body">
+        <p>Name: <%=res.item%></p>
+       <!-- <a href="/add-to-cart/<%=res._id%>" class="btn btn-primary">Add to cart</a> -->
+      </div>
+    </div>
+  </div>
+  </a>
+<%})%>
+</div>
+</div>
+</div>
+
+
+
+
