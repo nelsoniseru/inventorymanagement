@@ -1,5 +1,15 @@
 <%- include( "../partials/error/error") %> 
 <div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4 errors" style="margin: 10px auto" id="errors"> 
+  <div class="alert alert-danger mt-4 alert-dismissible fade show" role="alert">
+<h6 id="adderror"></h6>
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
+</div>
+</div>
+</div>
     <%if(items.length !==0){%>
 <table id="cart" class="table table-hover table-condensed table-responsive">
 <thead>
@@ -42,12 +52,65 @@
         <tr>
             <td><a href="/" class="btn btn-warning"><i class="fa fa-angle-left"></i>Continue Shopping</a></td>
             <td colspan="2" class="hidden-xs"></td>
-            <td class="hidden-xs text-center"><strong>Total $<%=session.cart.totalPrice%></strong></td>
-            <td><a href="/checkout-form" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+            <td class="hidden-xs text-center">Total $<strong class="totalprice"><%=session.cart.totalPrice%></strong></td>
+            <td>
+                
+                <form>
+                    <script src="https://checkout.flutterwave.com/v3.js"></script>
+                  <button type="button" class="btn btn-success btn-block" onClick="makePayment()">Pay Now</button>
+                    </form>  
+            </td>         
         </tr>
- 
+          <div>
+            <p id="username"  style="display: none;" ><%=result.name%></p>
+            <p id="phone" style="display: none;"><%=result.phone_number%></p>
+            <p id="email" style="display: none;"><%=result.email%></p>
+          </div>
 </tfoot>
-
+ 
+  <script>
+    function makePayment() {
+      let name = document.getElementsByTagName('p')[0].innerHTML
+      let email = document.getElementsByTagName('p')[2].innerHTML
+      let phone = document.getElementsByTagName('p')[1].innerHTML
+      let totalPrice = document.querySelector(".totalprice").innerHTML
+      if(name !==""){
+      FlutterwaveCheckout({
+        public_key: "FLWPUBK_TEST-ce11c7ef265486704728ce332ffaeec4-X",
+        tx_ref: "hooli-tx-1920bbtyt",
+        amount: totalPrice,
+        currency: "NGN",
+        country: "NG",
+        payment_options: "card,mobilemoney,ussd",
+        customer: {
+          email: email,
+          phone_number: phone,
+          name: name,
+        },
+        callback: function (data) { // specified callback function
+        
+            setTimeout(() => {
+            
+              
+             window.location.assign(`http://localhost:3000/checkout?status=${data.status}&name=${data.customer.name}`)
+            },2000); 
+        },
+        customizations: {
+          title: "My store",
+          description: "Payment for items in cart",
+          logo: "https://assets.piedpiper.com/logo.png",
+        },
+      });
+    }else{
+      var element = document.getElementById("errors");
+  element.classList.remove('errors');
+  document.getElementById("adderror").innerHTML ="You have to login to be able to purchase"
+  setTimeout(() => {
+  location.reload("http://localhost:3000/cart-page");
+},4000); 
+    }
+    }
+  </script>
 </table>
 <%}else{%>
     <h4 class="text-center">No items available in the cart</h4>

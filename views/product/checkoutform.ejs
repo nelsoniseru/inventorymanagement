@@ -1,3 +1,4 @@
+<%- include( "../partials/error/error") %> 
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class=" col-lg-6 col-md-8">
@@ -25,28 +26,28 @@
                 
                     <div class="row justify-content-center">
                         <div class="col-12">
-                            <div class="input-group"> <input type="text" name="name" placeholder="John Doe"> <label>Name</label> </div>
+                            <div class="input-group"> <input type="text" name="Address" placeholder="No 19 gbiaye street"> <label>Address</label> </div>
                         </div>
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-12">
-                            <div class="input-group"> <input type="text" id="cr_no" name="card_no" placeholder="0000 0000 0000 0000" minlength="19" maxlength="19"> <label>Card Number</label> </div>
+                            <div class="input-group"> <input type="text" id="cr_no" name="card_no" placeholder="0000 0000 0000 0000" minlength="19" maxlength="19" required> <label>Card Number</label> </div>
                         </div>
                     </div>
                     <div class="row justify-content-center">
                         <div class="col-12">
                             <div class="row">
                                 <div class="col-6">
-                                    <div class="input-group"> <input type="text" id="exp" name="expdate" placeholder="MM/YY" minlength="5" maxlength="5"> <label>Expiry Date</label> </div>
+                                    <div class="input-group"> <input type="text" id="exp" name="expdate" placeholder="MM/YY" minlength="5" maxlength="5" required> <label>Expiry Date</label> </div>
                                 </div>
                                 <div class="col-6">
-                                    <div class="input-group"> <input type="password" name="cvv" placeholder="&#9679;&#9679;&#9679;" minlength="3" maxlength="3"> <label>CVV</label> </div>
+                                    <div class="input-group"> <input type="password" name="cvv" placeholder="&#9679;&#9679;&#9679;" minlength="3" maxlength="3" required> <label>CVV</label> </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="row justify-content-center">
-                        <div class="col-md-12"> <input type="submit" value="Pay <%=session.cart.totalPrice%> NIG" class="btn btn-pay placeicon"> </div>
+                        <div class="col-md-12"> <input type="submit" value="Pay <%=new Intl.NumberFormat().format(session.cart.totalPrice)%> NIG" class="btn btn-pay placeicon"> </div>
                     </div>
                 </form>
             </div>

@@ -193,3 +193,6 @@ img {
   cursor: pointer;
   margin: 12px 25px 12px 0px
 }
+.errors{
+  display: none;
+}

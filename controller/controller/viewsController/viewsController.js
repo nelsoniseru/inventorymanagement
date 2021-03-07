@@ -1,8 +1,9 @@
 const Products = require("../../model/product/products")
 const Cart = require("../../cart/cart")
 const Checkout = require("../../checkout/checkout")
+var UserState = require("../../model/user/userAuthState")
 var Allproducts = new Products()
-
+var loggedinUserDetail = new UserState()
 class ViewsController {
     async HomeController(req, res) {
         let results = await Allproducts.getproducts()
@@ -44,8 +45,10 @@ class ViewsController {
            
             var carts = new  Cart(req.session.cart?req.session.cart:{})
        let items = carts.getItem()
-      
-      res.render("./product/cartproduct",{items})
+       let auth = req.cookies.AuthUser?req.cookies.AuthUser:""
+       let result = await loggedinUserDetail.getAuthUser(auth)
+       result = result || ""
+      res.render("./product/cartproduct",{items,result})
          }catch(e){
              console.log(e)
          }
@@ -74,16 +77,24 @@ class ViewsController {
     checkoutFormController(req,res){
         var carts = new  Cart(req.session.cart?req.session.cart:{})
         let items = carts.getItem()
-        res.render("./product/checkoutform",{items}) 
+        console.log(!carts.totalPrice)
+        if(carts.totalPrice == 0 || !carts.totalPrice){
+            req.flash("errormsg",`No items on cart for purchase`)
+            res.redirect("/cart-page") 
+       
+        }else{
+            res.render("./product/checkoutform",{items}) 
+        }
      }
 
-     checkoutController(req,res){
-         var check = new Checkout()
-         let totalAmount =req.session.cart.totalPrice
-         
-         check.ActivatingPayment(totalAmount,req.body)
-     }
+    async checkoutController(req,res){
+        if(req.query.status =="successful"){
+            req.session.cart = null
+            res.redirect("/cart-page")
+           }
+ 
+   
 }
-
+}
 
 module.exports = ViewsController

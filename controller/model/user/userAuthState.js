@@ -4,6 +4,7 @@ let userId = new findUser()
 function UserState() {
     this.requireAuth = requireAuth
     this.getAuthUserDetails = getAuthUserDetails
+    this.getAuthUser = getAuthUser
 }
 
 async function requireAuth(req, res, next) {
@@ -39,4 +40,17 @@ async function getAuthUserDetails(req, res, next) {
 
     }
 }
+
+
+async function getAuthUser(props) {
+    if(props !== ""){    
+    var decoded = jwt.verify(props, process.env.JWT_SECRET);
+     
+        let user = await userId.fetchUserById(decoded.id)
+        return user
+        }else{
+            return 
+        }
+        }
+
 module.exports = UserState

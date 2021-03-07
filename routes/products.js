@@ -13,5 +13,5 @@ router.get('/cart-page', controller.cartController);
 router.get('/cart-removeitem/:getcartproduct', controller.removeItemController);
 router.get('/cart-addunit/:getcartproduct', controller.addUnitController);
 router.get('/checkout-form',AuthState.requireAuth, controller.checkoutFormController);
-router.post('/checkout', controller.checkoutController);
+router.get('/checkout', controller.checkoutController);
 module.exports = router;
